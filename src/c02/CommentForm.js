@@ -14,6 +14,7 @@ export default class CommentForm extends PureComponent {
     evt.preventDefault();
     if(this.state.testArea){
         this.props.handleForm(this.state.testArea);
+        this.setState.testArea = '';
     }
   };
 

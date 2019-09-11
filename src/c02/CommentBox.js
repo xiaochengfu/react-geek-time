@@ -13,20 +13,27 @@ const comments = [
   { author: "Bood", content: "Hello Rekit!" },
 ];
 export class CommentBox extends React.PureComponent {
+
+  constructor(){
+    super();
+    this.state = {
+      commentData:comments
+    }
+  }
   
   handleForm = (textArea) =>{
     console.log('parent'+textArea);
     const newContent = [...comments, { author: "11",content:textArea}]
     this.setState({
-      comments:newContent
+      commentData:newContent
     });
   };
 
   render() {
     return (
       <div className="comment-box">
-        <h1>Comments ({comments.length})</h1>
-        <CommentList comments={comments} />
+        <h1>Comments ({this.state.commentData.length})</h1>
+        <CommentList comments={this.state.commentData} />
         <CommentForm handleForm={this.handleForm}/>
         {this.props.time.getTime()}
       </div>
